@@ -1,6 +1,12 @@
-# Portfolio — Nguyễn Văn A
+# Profilo — Lê Hồng Công
 
-Personal portfolio website built with React + Vite, TailwindCSS, and Framer Motion.
+Personal portfolio website with cosmic background, GPA mountain chart, and smooth animations.
+
+**Live:** [lehongcong.com](#) *(update after deploy)*
+
+## Preview
+
+![Portfolio Preview](public/avatar.jpg)
 
 ## Quick Start
 
@@ -9,77 +15,7 @@ npm install
 npm run dev
 ```
 
-Open [http://localhost:5173](http://localhost:5173) in your browser.
-
-## Chỉnh sửa nội dung
-
-Toàn bộ nội dung portfolio nằm trong **1 file duy nhất**:
-
-```
-src/data/portfolio.js
-```
-
-Mở file này và thay đổi:
-- `personalInfo` — tên, email, phone, links, ảnh chân dung
-- `aboutData` — bio, stats, services
-- `projectsData` — danh sách projects + filter categories
-- `skillsData` — skill levels, radar chart data, tools
-- `educationData` — timeline + certifications
-- `contactData` — heading, subtitle, EmailJS config
-
-**Không cần sửa code component** — chỉ cần thay data là xong.
-
-## Thêm ảnh
-
-Đặt ảnh vào thư mục `public/`:
-- `public/avatar.jpg` — ảnh chân dung (About section)
-- `public/resume.pdf` — file CV download
-- `public/projects/project-1.jpg` — thumbnail projects
-- `public/og-image.jpg` — ảnh Open Graph (share trên social media)
-
-Cập nhật đường dẫn trong `portfolio.js`.
-
-## Setup EmailJS
-
-1. Tạo tài khoản tại [emailjs.com](https://www.emailjs.com/)
-2. **Create Email Service** — chọn Gmail hoặc Outlook
-3. **Create Email Template** với các biến:
-   - `{{name}}` — tên người gửi
-   - `{{email}}` — email người gửi
-   - `{{subject}}` — tiêu đề
-   - `{{message}}` — nội dung tin nhắn
-4. Copy 3 IDs vào file `.env` (tạo từ `.env.example`):
-
-```env
-VITE_EMAILJS_SERVICE_ID=service_xxxxxxx
-VITE_EMAILJS_TEMPLATE_ID=template_xxxxxxx
-VITE_EMAILJS_PUBLIC_KEY=your_public_key
-```
-
-## Build production
-
-```bash
-npm run build
-npm run preview  # xem trước bản build
-```
-
-Output nằm trong `dist/`.
-
-## Deploy lên Vercel
-
-1. Push code lên GitHub
-2. Vào [vercel.com](https://vercel.com), import repo
-3. Thêm Environment Variables (3 EmailJS IDs)
-4. Click Deploy — xong!
-
-## Deploy lên Netlify
-
-1. Push code lên GitHub
-2. Vào [app.netlify.com](https://app.netlify.com), import repo
-3. Build command: `npm run build`
-4. Publish directory: `dist`
-5. Thêm Environment Variables
-6. Deploy
+Open [http://localhost:5173](http://localhost:5173)
 
 ## Tech Stack
 
@@ -90,20 +26,81 @@ Output nằm trong `dist/`.
 | TailwindCSS 4 | Styling |
 | Framer Motion | Animations |
 | Lucide React | Icons |
-| EmailJS | Contact form (no backend) |
 
 ## Features
 
-- Dark/Light mode with system preference detection
+- Cosmic background (starfield, nebula, solar systems, shooting stars)
+- Custom cursor with hover effects (desktop only)
+- Hero section with typing role animation + profile photo
+- GPA Mountain Chart — SVG line chart with hover tooltips
+- Skills with tech icons from devicons CDN
+- Project cards with real GitHub links
 - Smooth scroll navigation with scroll-spy
-- Animated sections on scroll (fade-up, stagger)
-- SVG Radar chart (custom, no chart library)
-- Animated progress bars
-- Project filtering with layout animations
-- Education timeline with alternating layout
-- Contact form with real-time validation
-- Toast notification system
-- Modal for certificate details
 - Responsive: mobile, tablet, desktop
-- Accessibility: semantic HTML, focus states, skip navigation, reduced motion
-- SEO: meta tags, Open Graph, Twitter Card, JSON-LD, sitemap
+- SEO: meta tags, Open Graph, Twitter Card, JSON-LD
+
+## Project Structure
+
+```
+src/
+├── components/
+│   ├── common/       # CosmicBackground, GPAChart, RadarChart, CustomCursor
+│   ├── layout/       # Navbar, Footer
+│   ├── sections/     # Hero, About, Projects, Skills, Education, Contact
+│   └── ui/           # CountUp, ProgressBar, Toast, Modal, SocialIcons
+├── data/
+│   └── portfolio.js  # All content here — edit this file to customize
+├── hooks/            # useScrollSpy, useTheme
+├── styles/           # globals.css, cosmic-background.css
+├── App.jsx
+└── main.jsx
+```
+
+## Customize Content
+
+All content is in **one file**: `src/data/portfolio.js`
+
+- `personalInfo` — name, email, links, avatar
+- `aboutData` — bio, stats, services
+- `projectsData` — projects + categories
+- `skillsData` — skills, radar chart, tools
+- `educationData` — university, GPA semesters, certifications
+- `contactData` — heading, subtitle, availability
+
+## Add Images
+
+| Image | Path |
+|-------|------|
+| Profile photo | `public/avatar.jpg` |
+| Project screenshots | `public/projects/*.png` |
+| Resume/CV | `public/resume.pdf` |
+| OG image (social share) | `public/og-image.jpg` |
+
+## Build & Deploy
+
+```bash
+npm run build      # Production build → dist/
+npm run preview    # Preview locally
+```
+
+### Deploy on Vercel (recommended)
+
+1. Push to GitHub
+2. Go to [vercel.com](https://vercel.com) → import repo
+3. Deploy — done!
+
+### Custom Domain
+
+Add DNS records pointing to Vercel:
+- `A` record: `@` → `76.76.21.21`
+- `CNAME` record: `www` → `cname.vercel-dns.com`
+
+Then add your domain in Vercel → Project Settings → Domains.
+
+## Author
+
+**Lê Hồng Công** — Backend Developer Intern
+
+- GitHub: [Congle666](https://github.com/Congle666)
+- Facebook: [cleee666](https://www.facebook.com/cleee666)
+- Email: lhc09062004@gmail.com
