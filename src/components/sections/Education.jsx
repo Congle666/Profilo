@@ -1,23 +1,14 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Award, ExternalLink, GraduationCap, TrendingUp, Trophy } from "lucide-react";
+import { Award, ExternalLink, GraduationCap, Trophy } from "lucide-react";
 import { AnimatedSection } from "../common/AnimatedSection";
-import { GPAChart } from "../common/GPAChart";
 import { Modal } from "../ui/Modal";
 import { educationData } from "../../data/portfolio";
 
 export function Education() {
   const [selectedCert, setSelectedCert] = useState(null);
 
-  const { university, semesters, certifications } = educationData;
-
-  const creditsPercent = Math.round(
-    (university.creditsEarned / university.creditsTotal) * 100
-  );
-
-  // GPA tích lũy hiện tại (lấy từ semester cuối cùng)
-  const currentGpa = semesters[semesters.length - 1]?.cumulativeGpa;
-  const bestSemester = semesters.reduce((best, s) => (s.gpa > best.gpa ? s : best), semesters[0]);
+  const { university, certifications } = educationData;
 
   return (
     <section id="education" className="relative py-24">
@@ -64,7 +55,7 @@ export function Education() {
                     {university.period}
                   </span>
                   <span className="rounded-lg border border-border px-3 py-1.5 text-xs text-muted">
-                    Full-time
+                    {university.status}
                   </span>
                 </div>
               </div>
@@ -76,7 +67,7 @@ export function Education() {
             <div className="relative flex h-full flex-col items-center justify-center overflow-hidden rounded-2xl border border-border bg-card/60 p-6 backdrop-blur-sm">
               <div className="absolute -right-8 -bottom-8 h-24 w-24 rounded-full bg-accent/10 blur-[40px]" />
               <p className="mb-1 text-xs font-medium uppercase tracking-wider text-muted">
-                Cumulative GPA
+                Final GPA
               </p>
               <div className="relative my-2">
                 <span className="heading text-5xl font-bold text-accent">
@@ -98,7 +89,7 @@ export function Education() {
             </div>
           </AnimatedSection>
 
-          {/* Highlight — Học Sinh Giỏi */}
+          {/* Highlight — Scholarship */}
           <AnimatedSection delay={0.2}>
             {university.highlights[0] && (
               <div className="relative flex h-full flex-col items-center justify-center overflow-hidden rounded-2xl border border-border bg-card/60 p-6 text-center backdrop-blur-sm">
@@ -120,29 +111,27 @@ export function Education() {
             )}
           </AnimatedSection>
 
-          {/* Credits Progress (2 cột) */}
+          {/* Status (2 cột) */}
           <AnimatedSection className="md:col-span-2" delay={0.15}>
             <div className="relative overflow-hidden rounded-2xl border border-border bg-card/60 p-5 backdrop-blur-sm">
               <div className="mb-3 flex items-center justify-between">
                 <span className="text-sm font-medium">Credits</span>
-                <span className="font-mono text-sm text-accent">
-                  {university.creditsEarned}/{university.creditsTotal}
-                </span>
+                <span className="font-mono text-sm text-accent">All completed</span>
               </div>
               <div className="h-2.5 w-full overflow-hidden rounded-full bg-border">
                 <motion.div
                   className="h-full rounded-full bg-gradient-to-r from-accent/70 to-accent"
                   initial={{ width: 0 }}
-                  whileInView={{ width: `${creditsPercent}%` }}
+                  whileInView={{ width: "100%" }}
                   viewport={{ once: true }}
                   transition={{ duration: 1.5, delay: 0.3, ease: "easeOut" }}
                 />
               </div>
-              <p className="mt-2 text-right text-xs text-muted">{creditsPercent}% Complete</p>
+              <p className="mt-2 text-right text-xs text-muted">{university.status}</p>
             </div>
           </AnimatedSection>
 
-          {/* Gemini Certificate Card (2 cột) */}
+          {/* Certificate Card (2 cột) */}
           <AnimatedSection className="md:col-span-2" delay={0.25}>
             {university.highlights[1] && (
               <div className="relative flex h-full items-center gap-4 overflow-hidden rounded-2xl border border-accent/20 bg-accent/[0.03] p-5 backdrop-blur-sm">
@@ -168,46 +157,6 @@ export function Education() {
             )}
           </AnimatedSection>
         </div>
-
-        {/* ============================================
-           GPA MOUNTAIN CHART
-           ============================================ */}
-        <AnimatedSection className="mb-16">
-          <div className="mb-6 flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <TrendingUp size={18} className="text-accent" />
-              <h3 className="heading text-xl font-bold">GPA Progression</h3>
-            </div>
-            <div className="flex items-center gap-3 text-xs text-muted">
-              <span>
-                Best: <span className="font-semibold text-accent">{bestSemester.gpa.toFixed(2)}</span> ({bestSemester.label})
-              </span>
-              <span className="h-3 w-px bg-border" />
-              <span>
-                Current: <span className="font-semibold text-foreground">{currentGpa.toFixed(2)}</span>
-              </span>
-            </div>
-          </div>
-
-          <div className="overflow-hidden rounded-2xl border border-border bg-card/40 p-4 backdrop-blur-sm md:p-6">
-            <GPAChart semesters={semesters} />
-          </div>
-
-          {/* Growth indicator */}
-          <div className="mt-4 flex items-center justify-center gap-2 text-sm">
-            <span className="text-muted">6 semesters:</span>
-            <span className="font-mono font-semibold text-accent">
-              {semesters[0].cumulativeGpa.toFixed(2)}
-            </span>
-            <span className="text-muted">→</span>
-            <span className="font-mono font-semibold text-accent">
-              {currentGpa.toFixed(2)}
-            </span>
-            <span className="rounded-md bg-accent/10 px-2 py-0.5 text-xs font-semibold text-accent">
-              +{(currentGpa - semesters[0].cumulativeGpa).toFixed(2)}
-            </span>
-          </div>
-        </AnimatedSection>
 
         {/* ============================================
            CERTIFICATIONS

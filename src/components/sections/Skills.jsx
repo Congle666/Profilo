@@ -21,8 +21,7 @@ export function Skills() {
             <span className="heading-italic text-accent">Expertise</span>
           </h2>
           <p className="max-w-lg text-muted">
-            A comprehensive overview of my technical skills and proficiency
-            levels across different domains.
+            The stack I use to build, integrate and ship backend systems.
           </p>
         </AnimatedSection>
 
@@ -41,12 +40,12 @@ export function Skills() {
           {/* Progress Bars */}
           <AnimatedSection direction="right">
             <div className="space-y-8">
-              {/* C# / .NET group */}
+              {/* Go backend group */}
               <div>
                 <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-accent">
-                  {skillsData.frontendLabel || "Frontend"}
+                  {skillsData.primaryLabel}
                 </h3>
-                {skillsData.frontend.map((skill) => (
+                {skillsData.primary.map((skill) => (
                   <ProgressBar
                     key={skill.name}
                     label={skill.name}
@@ -57,12 +56,12 @@ export function Skills() {
                 ))}
               </div>
 
-              {/* Go / Database group */}
+              {/* Data, cloud & integration group */}
               <div>
                 <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-accent">
-                  {skillsData.backendLabel || "Backend"}
+                  {skillsData.secondaryLabel}
                 </h3>
-                {skillsData.backend.map((skill) => (
+                {skillsData.secondary.map((skill) => (
                   <ProgressBar
                     key={skill.name}
                     label={skill.name}

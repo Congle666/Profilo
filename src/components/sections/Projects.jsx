@@ -30,8 +30,8 @@ export function Projects() {
             <span className="heading-italic text-accent">Projects</span>
           </h2>
           <p className="max-w-lg text-muted">
-            A selection of projects I&apos;ve worked on, from web applications
-            to landing pages and design concepts.
+            Products I&apos;ve built and run in Go, from a live platform with
+            paying customers to desktop tooling.
           </p>
         </AnimatedSection>
 

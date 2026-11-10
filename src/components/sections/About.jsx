@@ -54,9 +54,9 @@ export function About() {
               </span>
             </div>
             <h2 className="heading mb-6 text-3xl font-bold md:text-4xl">
-              Passionate about creating{" "}
+              Backend systems that{" "}
               <span className="heading-italic text-accent">
-                digital experiences
+                ship to real users
               </span>
             </h2>
             <div className="space-y-4 text-muted leading-relaxed">
@@ -73,7 +73,12 @@ export function About() {
             <StaggerItem key={i}>
               <div className="rounded-xl border border-border bg-card/50 p-6 text-center transition-colors hover:border-accent/50">
                 <div className="heading mb-1 text-3xl font-bold text-accent md:text-4xl">
-                  <CountUp end={stat.value} suffix={stat.suffix} />
+                  <CountUp
+                    end={stat.value}
+                    prefix={stat.prefix}
+                    suffix={stat.suffix}
+                    decimals={stat.decimals}
+                  />
                 </div>
                 <p className="text-sm text-muted">{stat.label}</p>
               </div>
@@ -90,7 +95,7 @@ export function About() {
             </span>
           </div>
           <h3 className="heading mb-10 text-2xl font-bold md:text-3xl">
-            Services I Offer
+            How I Can Help
           </h3>
         </AnimatedSection>
 

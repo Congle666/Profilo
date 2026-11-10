@@ -3,8 +3,9 @@ import { useState, useEffect, useRef } from "react";
 /**
  * Component đếm số từ 0 lên target khi scroll vào view.
  * Dùng requestAnimationFrame cho smooth animation.
+ * decimals: số chữ số thập phân (vd GPA 3.31 → decimals=2).
  */
-export function CountUp({ end, duration = 2000, suffix = "" }) {
+export function CountUp({ end, duration = 2000, prefix = "", suffix = "", decimals = 0 }) {
   const [count, setCount] = useState(0);
   const ref = useRef(null);
   const started = useRef(false);
@@ -12,6 +13,21 @@ export function CountUp({ end, duration = 2000, suffix = "" }) {
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
+
+    const animateCount = () => {
+      const startTime = performance.now();
+      const factor = 10 ** decimals;
+
+      const tick = (now) => {
+        const progress = Math.min((now - startTime) / duration, 1);
+        // Ease-out: nhanh đầu, chậm cuối
+        const eased = 1 - Math.pow(1 - progress, 3);
+        setCount(Math.round(eased * end * factor) / factor);
+        if (progress < 1) requestAnimationFrame(tick);
+      };
+
+      requestAnimationFrame(tick);
+    };
 
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -25,29 +41,12 @@ export function CountUp({ end, duration = 2000, suffix = "" }) {
 
     observer.observe(el);
     return () => observer.disconnect();
-  }, []);
-
-  const animateCount = () => {
-    const startTime = performance.now();
-
-    const tick = (now) => {
-      const elapsed = now - startTime;
-      const progress = Math.min(elapsed / duration, 1);
-      // Ease-out: nhanh đầu, chậm cuối
-      const eased = 1 - Math.pow(1 - progress, 3);
-      setCount(Math.round(eased * end));
-
-      if (progress < 1) {
-        requestAnimationFrame(tick);
-      }
-    };
-
-    requestAnimationFrame(tick);
-  };
+  }, [end, duration, decimals]);
 
   return (
     <span ref={ref}>
-      {count}
+      {prefix}
+      {count.toFixed(decimals)}
       {suffix}
     </span>
   );

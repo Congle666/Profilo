@@ -2,19 +2,20 @@
 // PORTFOLIO DATA
 // Chỉnh sửa file này để thay đổi toàn bộ nội dung trang portfolio.
 // Không cần sửa code component — chỉ cần thay data ở đây.
+// Nội dung đồng bộ với CV (public/resume.pdf).
 // ============================================
 
 export const personalInfo = {
   name: "Lê Hồng Công",
   firstName: "Lê Hồng",
   lastName: "Công",
-  role: "Backend Developer Intern",
+  role: "Go Backend Developer",
   // Các role xoay vòng hiệu ứng typing ở Hero
-  roles: ["Backend Developer", "Problem Solver", "API Architect", "Code Enthusiast"],
-  tagline: "Building robust backend systems with C# and Go",
+  roles: ["Go Backend Developer", "Technical Consultant", "Solutions Engineer"],
+  tagline: "Go backend systems and integrations that ship to real users",
   description:
-    "I'm a Backend Developer Intern passionate about building scalable APIs, microservices, and database-driven applications. Experienced with C# (.NET ecosystem) and GoLang, I focus on writing clean, testable, and performant server-side code.",
-  email: "lhc09062004@gmail.com",
+    "Software Engineering graduate building backend services in Go. I design APIs and data models, integrate payments and cloud storage, and help clients turn requirements into working solutions.",
+  email: "lecong.work@gmail.com",
   phone: "0916640931",
   location: "Ho Chi Minh City, Vietnam",
   github: "https://github.com/Congle666",
@@ -27,40 +28,60 @@ export const personalInfo = {
 // ABOUT SECTION
 // ============================================
 export const aboutData = {
-  bio: `I'm a Backend Developer Intern with a strong foundation in C# and GoLang, currently pursuing my degree in Software Engineering. I love solving complex problems and building systems that handle real-world scale.
+  bio: `I'm a Software Engineering graduate (GPA 3.31/4.0) focused on Go backend development and system integration. I like owning a problem end to end, from the data model and API design to deployment and the conversation with the people who use it.
 
-My experience spans from building RESTful APIs with ASP.NET to creating high-performance services with Go's Gin framework. I'm comfortable working with SQL Server, MySQL, and automating workflows with Selenium.
+I built and still operate Junvite, an online wedding invitation platform written in Go (Gin, GORM, MySQL) that has served around 70 paying customers, with payments confirmed automatically through SePay webhooks and media stored on Cloudflare R2.
 
-I'm eager to learn, grow fast, and contribute to production-grade backend systems. Always looking for opportunities to improve my skills and take on new challenges.`,
+As a Technical Consultant / Solutions Engineer at Khoi Solutions, I delivered an enterprise AI rollout on Amazon Q Business, connected Microsoft 365 data sources with Entra ID access control, and built an internal ticketing tool in Go.
 
+I'm looking for a Fresher Go Backend or Technical Consultant role where I can keep shipping production systems and grow toward solution architecture.`,
+
+  // decimals: số chữ số thập phân hiển thị trong CountUp
   stats: [
-    { value: 1, suffix: "+", label: "Years Learning" },
-    { value: 10, suffix: "+", label: "Projects" },
-    { value: 5, suffix: "+", label: "Certificates" },
-    { value: 3, suffix: "+", label: "Technologies" },
+    { value: 70, prefix: "~", suffix: "", label: "Paying customers on Junvite" },
+    { value: 28, suffix: "", label: "AI use cases assessed" },
+    { value: 2, suffix: "", label: "Go products shipped" },
+    { value: 3.31, decimals: 2, suffix: "", label: "Final GPA (out of 4.0)" },
   ],
 
   services: [
     {
       icon: "Server",
-      title: "Backend Development",
+      title: "Go Backend Development",
       description:
-        "Building RESTful APIs and microservices with ASP.NET Core, Gin (Go), handling authentication, authorization, and business logic.",
+        "RESTful APIs with Go (Gin) and GORM: authentication with JWT, business logic, and MySQL schemas designed for the product's real workflows.",
     },
     {
       icon: "Database",
-      title: "Database Design",
+      title: "Payments & Cloud Integration",
       description:
-        "Designing efficient database schemas, writing optimized queries, and managing data with SQL Server and MySQL.",
+        "Automated payment confirmation via SePay webhooks, media storage on Cloudflare R2 and AWS S3, and Docker-based deployments.",
     },
     {
-      icon: "TestTube2",
-      title: "Testing & Automation",
+      icon: "MessageSquare",
+      title: "Technical Consulting",
       description:
-        "Writing unit tests, integration tests, and automating browser workflows with Selenium for quality assurance.",
+        "Requirement analysis, use-case feasibility, demo/PoC environments, technical documentation and end-user training for enterprise rollouts.",
     },
   ],
 };
+
+// ============================================
+// EXPERIENCE
+// ============================================
+export const experienceData = [
+  {
+    company: "Khoi Solutions",
+    role: "Technical Consultant | Solutions Engineer",
+    period: "07/2026 — 10/2026",
+    tech: ["Go", "Wails", "MySQL", "Amazon S3", "Amazon Q Business", "Microsoft 365", "Microsoft Entra ID"],
+    highlights: [
+      "Built an internal ticket management tool with Go (Wails) and MySQL to standardize intake, triage and tracking of support requests, with request sync from Google Forms, AI-suggested resolutions and installers distributed via Amazon S3.",
+      "Connected SharePoint Online and OneDrive data sources to Amazon Q Business, configuring authentication and access control through Microsoft Entra ID to meet client security requirements.",
+      "Gathered business requirements, assessed feasibility and evaluated answer quality across 28 AI use cases; authored specifications, ran solution demos and trained end users.",
+    ],
+  },
+];
 
 // ============================================
 // PROJECTS
@@ -71,28 +92,17 @@ export const projectsData = {
   projects: [
     {
       id: 1,
-      title: "News 24h",
+      title: "Junvite",
       description:
-        "News aggregation platform with 24-hour coverage, built with ASP.NET Core MVC and server-side rendering.",
+        "Online wedding invitation platform serving ~70 paying customers. Go (Gin) REST APIs for orders, templates and JWT auth, automated payment confirmation via SePay webhooks, media on Cloudflare R2, deployed with Docker.",
       category: "Web App",
-      image: "/projects/news24h.png",
-      tech: ["C#", "ASP.NET Core", "MVC", "JavaScript"],
-      demoUrl: "#",
-      githubUrl: "https://github.com/Congle666/News_24h",
-    },
-    {
-      id: 2,
-      title: "JunTech Wedding",
-      description:
-        "Online wedding invitation platform with RSVP, guest management, photo galleries, QR payment, and admin dashboard.",
-      category: "Web App",
-      image: "/projects/wedding.png",
-      tech: ["Go", "Gin", "Next.js", "TypeScript", "MySQL"],
-      demoUrl: "#",
+      image: "/projects/junvite.jpg",
+      tech: ["Go", "Gin", "GORM", "MySQL", "Docker", "Cloudflare R2", "SePay"],
+      demoUrl: "https://junvite.com/",
       githubUrl: "https://github.com/Congle666/Wedding-web",
     },
     {
-      id: 3,
+      id: 2,
       title: "SRT Go",
       description:
         "Desktop subtitle generator — download video, extract audio, transcribe with Whisper AI, and generate SRT files.",
@@ -108,166 +118,89 @@ export const projectsData = {
 // ============================================
 // SKILLS
 // ============================================
+const devicon = (path) => `https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${path}`;
+
 export const skillsData = {
   radarSkills: [
-    { label: "C#", value: 85 },
-    { label: "ASP.NET", value: 80 },
-    { label: "GoLang", value: 70 },
-    { label: "SQL Server", value: 75 },
-    { label: "MySQL", value: 70 },
-    { label: "Selenium", value: 65 },
+    { label: "Go", value: 80 },
+    { label: "REST API", value: 80 },
+    { label: "MySQL", value: 75 },
+    { label: "Docker", value: 65 },
+    { label: "Cloud", value: 65 },
+    { label: "Consulting", value: 75 },
   ],
 
-  // Đổi tên nhóm cho phù hợp backend
-  frontend: [
-    { name: "C#", percentage: 85, level: "Advanced", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" },
-    { name: "ASP.NET MVC", percentage: 80, level: "Advanced", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dotnetcore/dotnetcore-original.svg" },
-    { name: "ASP.NET Web API", percentage: 80, level: "Advanced", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dotnetcore/dotnetcore-original.svg" },
-    { name: "Entity Framework", percentage: 75, level: "Advanced", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dotnetcore/dotnetcore-original.svg" },
-    { name: "WinForms", percentage: 70, level: "Advanced", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/windows11/windows11-original.svg" },
-    { name: "Selenium", percentage: 65, level: "Intermediate", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/selenium/selenium-original.svg" },
+  primary: [
+    { name: "Go (Golang)", percentage: 80, level: "Proficient", icon: devicon("go/go-original-wordmark.svg") },
+    { name: "Gin Framework", percentage: 75, level: "Proficient", icon: devicon("go/go-original.svg") },
+    { name: "GORM", percentage: 70, level: "Intermediate", icon: devicon("go/go-original.svg") },
+    { name: "Wails (Go desktop)", percentage: 65, level: "Intermediate", icon: devicon("go/go-original.svg") },
+    { name: "REST API & JWT", percentage: 80, level: "Proficient", icon: null },
   ],
-  frontendLabel: "C# / .NET",
+  primaryLabel: "Go Backend",
 
-  backend: [
-    { name: "GoLang", percentage: 70, level: "Advanced", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/go/go-original-wordmark.svg" },
-    { name: "Gin Framework", percentage: 65, level: "Intermediate", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/go/go-original.svg" },
-    { name: "SQL Server (SSMS)", percentage: 75, level: "Advanced", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/microsoftsqlserver/microsoftsqlserver-original.svg" },
-    { name: "MySQL", percentage: 70, level: "Advanced", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" },
-    { name: "REST API Design", percentage: 80, level: "Advanced", icon: null },
+  secondary: [
+    { name: "MySQL", percentage: 75, level: "Proficient", icon: devicon("mysql/mysql-original.svg") },
+    { name: "SQL Server", percentage: 65, level: "Intermediate", icon: devicon("microsoftsqlserver/microsoftsqlserver-original.svg") },
+    { name: "Docker", percentage: 65, level: "Intermediate", icon: devicon("docker/docker-original.svg") },
+    { name: "AWS S3 / Cloudflare R2", percentage: 65, level: "Intermediate", icon: devicon("cloudflare/cloudflare-original.svg") },
+    { name: "Amazon Q Business", percentage: 70, level: "Intermediate", icon: "/icons/aws.svg" },
   ],
-  backendLabel: "Go / Database",
+  secondaryLabel: "Data, Cloud & Integration",
 
   // Tools — có icon
   tools: [
-    { name: "Git", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" },
-    { name: "Visual Studio", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/visualstudio/visualstudio-original.svg" },
-    { name: "VS Code", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" },
-    { name: "SSMS", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/microsoftsqlserver/microsoftsqlserver-original.svg" },
-    { name: "Postman", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postman/postman-original.svg" },
-    { name: "Docker", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" },
-    { name: "Swagger", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/swagger/swagger-original.svg" },
+    { name: "Git", icon: devicon("git/git-original.svg") },
+    { name: "Docker", icon: devicon("docker/docker-original.svg") },
+    { name: "Postman", icon: devicon("postman/postman-original.svg") },
+    { name: "VS Code", icon: devicon("vscode/vscode-original.svg") },
+    { name: "Cloudflare", icon: devicon("cloudflare/cloudflare-original.svg") },
+    { name: "AWS", icon: "/icons/aws.svg" },
+    { name: "Microsoft 365", icon: null },
+    { name: "SePay", icon: null },
   ],
 
   softSkills: [
-    "Problem Solving",
-    "Teamwork",
+    "Requirement Analysis",
+    "Client Communication",
+    "Technical Writing",
+    "Product Ownership",
     "Fast Learner",
-    "Analytical Thinking",
-    "Communication",
   ],
 };
 
 // ============================================
 // EDUCATION & CERTIFICATIONS
-// Redesigned: có transcript điểm từng môn
 // ============================================
 export const educationData = {
-  // Thông tin trường — hiển thị dạng bento grid
   university: {
     name: "HUFLIT University",
     shortName: "HUFLIT",
     degree: "Software Engineering",
-    period: "2022 — 2027",
-    gpa: "3.17",
+    period: "2023 — 2026",
+    status: "Graduated",
+    gpa: "3.31",
     gpaScale: "4.0",
     description:
-      "Focused on backend development, database systems, and software architecture. Active member of the university's programming club.",
-    creditsEarned: 117,
-    creditsTotal: 141,
+      "Graduated with Very Good honors. Thesis: improved association-rule-based classification models, raising minority-class detection by an average of 26.67 percentage points.",
     highlights: [
       {
         icon: "Trophy",
-        title: "Honor Student",
-        subtitle: "Academic Year 2025 - 2026",
+        title: "Effort Scholarship",
+        subtitle: "Academic Year 2025 – 2026",
       },
       {
         icon: "Award",
-        title: "Google Gemini Certificate",
-        subtitle: "AI & Machine Learning Fundamentals",
+        title: "Google AI Essentials",
+        subtitle: "Coursera · 05/2025",
       },
     ],
   },
 
-  // GPA theo từng học kỳ — dùng cho GPA Mountain chart
-  // gpa: hệ 4, cumulativeGpa: tích lũy, highlights: môn nổi bật
-  semesters: [
-    {
-      label: "HK1",
-      period: "2023-2024",
-      gpa: 2.42,
-      cumulativeGpa: 2.28,
-      credits: 18,
-      highlights: [
-        { name: "Tiếng Anh TQ 1", score: 8.0, grade: "B+" },
-        { name: "Toán rời rạc", score: 7.0, grade: "B" },
-      ],
-    },
-    {
-      label: "HK2",
-      period: "2023-2024",
-      gpa: 2.38,
-      cumulativeGpa: 2.32,
-      credits: 16,
-      highlights: [
-        { name: "Đại số tuyến tính", score: 10.0, grade: "A+" },
-      ],
-    },
-    {
-      label: "HK3",
-      period: "2024-2025",
-      gpa: 2.97,
-      cumulativeGpa: 2.55,
-      credits: 19,
-      highlights: [
-        { name: "Kỹ năng mềm", score: 8.8, grade: "A" },
-        { name: "CTDL & Giải thuật", score: 8.1, grade: "B+" },
-      ],
-    },
-    {
-      label: "HK4",
-      period: "2024-2025",
-      gpa: 3.45,
-      cumulativeGpa: 2.79,
-      credits: 20,
-      highlights: [
-        { name: "Thuật toán đồ thị", score: 8.8, grade: "A" },
-        { name: "LT Di động", score: 8.6, grade: "A" },
-        { name: "Lịch sử Đảng", score: 8.8, grade: "A" },
-      ],
-    },
-    {
-      label: "HK5",
-      period: "2024-2025",
-      gpa: 3.74,
-      cumulativeGpa: 3.01,
-      credits: 23,
-      highlights: [
-        { name: "Xác suất thống kê", score: 9.6, grade: "A+" },
-        { name: "Lập trình Java", score: 9.4, grade: "A+" },
-        { name: "Web nâng cao", score: 9.0, grade: "A+" },
-        { name: "Thiết kế giao diện", score: 9.2, grade: "A+" },
-      ],
-    },
-    {
-      label: "HK6",
-      period: "2025-2026",
-      gpa: 4.00,
-      cumulativeGpa: 3.17,
-      credits: 19,
-      highlights: [
-        { name: "Blockchain", score: 10.0, grade: "A+" },
-        { name: "CSDL phân tán", score: 10.0, grade: "A+" },
-        { name: "Kiểm định PM", score: 9.8, grade: "A+" },
-        { name: "CN phần mềm NC", score: 9.0, grade: "A+" },
-      ],
-    },
-  ],
-
   certifications: [
     {
-      name: "Google Gemini Certificate",
-      issuer: "Google",
+      name: "Google AI Essentials",
+      issuer: "Coursera",
       year: "2025",
       url: "#",
     },
@@ -280,12 +213,8 @@ export const educationData = {
 export const contactData = {
   heading: "Let's Work Together",
   subtitle:
-    "Looking for a backend intern who's eager to learn and contribute? I'd love to hear from you. Let's build something great together.",
-  availability: "Available for internship",
-
-  emailjsServiceId: import.meta.env.VITE_EMAILJS_SERVICE_ID || "",
-  emailjsTemplateId: import.meta.env.VITE_EMAILJS_TEMPLATE_ID || "",
-  emailjsPublicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY || "",
+    "Hiring a Fresher Go Backend Developer or Technical Consultant? I'd be glad to talk about how I can contribute to your team.",
+  availability: "Open to full-time roles",
 };
 
 // ============================================
@@ -294,6 +223,7 @@ export const contactData = {
 export const navLinks = [
   { id: "home", label: "Home" },
   { id: "about", label: "About" },
+  { id: "experience", label: "Experience" },
   { id: "projects", label: "Projects" },
   { id: "skills", label: "Skills" },
   { id: "education", label: "Education" },
